@@ -1,4 +1,4 @@
 fn main() {
-    println!("Hello, world!");
+    let foo: u32 = 123;
+    println!("Hello, world! {}", foo);
 }
-
