@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes: 
+      - db:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/create_tables.sql
+  cloudbeaver:
+      image: dbeaver/cloudbeaver:latest
+      restart: always
+      ports:
+       - '8978:8978'
+      volumes: 
+       - cloudbeaver:/opt/cloudbeaver/workspace            
+
+volumes:
+  cloudbeaver:
+  db:
+    driver: local
+
