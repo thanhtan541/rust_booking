@@ -20,3 +20,6 @@ rocket_contrib = "0.4.4"
 
 features = ["handlebars"]
 
+[toolchain]
+channel = "nightly"
+
