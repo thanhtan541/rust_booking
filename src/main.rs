@@ -57,7 +57,10 @@ fn index() -> Template {
     let results = self::schema::bookings::dsl::bookings
         .load::<Booking>(connection)
         .expect("Error loading bookings");
-    Template::render("bookings", context! {bookings: &results, count: results.len()})
+    Template::render(
+        "bookings",
+        context! {bookings: &results, count: results.len()},
+    )
 }
 
 #[get("/hello")]
@@ -73,4 +76,3 @@ fn rocket() -> _ {
         .mount("/", routes![hello])
         .attach(Template::fairing())
 }
-

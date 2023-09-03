@@ -7,4 +7,3 @@ diesel::table! {
         end_date -> Varchar,
     }
 }
-

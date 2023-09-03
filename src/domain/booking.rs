@@ -36,4 +36,3 @@ mod test {
         assert_eq!(booking.end_date, end_date.as_str());
     }
 }
-

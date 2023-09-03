@@ -1,4 +1,4 @@
-mod domain; 
+mod domain;
 
 pub fn add_two(a: i32) -> i32 {
     internal_adder(a, 2)
@@ -17,4 +17,3 @@ mod tests {
         assert_eq!(4, internal_adder(2, 2));
     }
 }
-

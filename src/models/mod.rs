@@ -1,6 +1,6 @@
 use super::schema::bookings;
-use diesel::{prelude::*};
-use serde::{Serialize, Deserialize};
+use diesel::prelude::*;
+use serde::{Deserialize, Serialize};
 
 #[derive(Queryable, Insertable, Serialize, Deserialize)]
 #[diesel(table_name = bookings)]
