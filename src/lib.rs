@@ -1,4 +1,5 @@
 mod domain;
+mod infrastructure;
 
 pub fn add_two(a: i32) -> i32 {
     internal_adder(a, 2)
