@@ -29,7 +29,7 @@ struct NewBooking {
 
 type Result<T, E = Debug<diesel::result::Error>> = std::result::Result<T, E>;
 
-#[post("/booking", format = "json", data = "<booking>")]
+#[post("/api/booking", format = "json", data = "<booking>")]
 fn create_booking(booking: Json<NewBooking>) -> Result<Created<Json<NewBooking>>> {
     use self::schema::bookings::dsl::*;
     use models::Booking;
@@ -49,7 +49,7 @@ fn create_booking(booking: Json<NewBooking>) -> Result<Created<Json<NewBooking>>
     Ok(Created::new("/").body(booking))
 }
 
-#[get("/bookings")]
+#[get("/api/bookings")]
 fn index() -> Template {
     use self::models::Booking;
 
@@ -65,7 +65,7 @@ fn index() -> Template {
 
 #[get("/hello")]
 fn hello() -> String {
-    format!("Hello")
+    "Hello".to_string()
 }
 
 #[launch]
