@@ -1,3 +1,4 @@
+mod controllers;
 mod domain;
 mod infrastructure;
 
