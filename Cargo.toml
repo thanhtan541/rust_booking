@@ -22,4 +22,3 @@ features = ["handlebars"]
 
 [toolchain]
 channel = "nightly"
-

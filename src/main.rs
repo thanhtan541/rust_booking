@@ -54,7 +54,13 @@ fn rocket() -> _ {
         .mount("/", routes![hello])
         .mount(
             "/",
-            routes![booking_controller::show, booking_controller::create,],
+            routes![
+                booking_controller::show,
+                booking_controller::create,
+                booking_controller::update,
+                booking_controller::delete,
+                booking_controller::fun,
+            ],
         )
         .attach(Template::fairing())
 }
