@@ -1,6 +1,9 @@
 mod controllers;
 mod domain;
+mod error;
 mod infrastructure;
+mod prelude;
+mod utils;
 
 pub fn add_two(a: i32) -> i32 {
     internal_adder(a, 2)
