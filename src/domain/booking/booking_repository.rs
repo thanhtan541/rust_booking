@@ -1,9 +1,10 @@
 use crate::domain::booking::booking::Booking;
+use crate::prelude::*;
 use std::collections::HashMap;
 
 pub trait BookingRepository {
-    fn find_by_ref(&self, id: u32) -> Option<Booking>;
-    fn save(&mut self, user: Booking);
+    fn find_by_ref(&self, ref_no: String) -> Result<Booking>;
+    fn save(&mut self, user: Booking) -> Result<bool>;
 }
 
 pub struct InMemoryBookingRepository {

@@ -24,17 +24,15 @@ pub fn show(ref_no: &str) -> String {
 
 #[post("/api/bookings", format = "json", data = "<booking>")]
 pub fn create(booking: Json<NewBooking>) -> status::Accepted<String> {
-    status::Accepted(Some(
-        (format!(
-            "Created new booking from {} to {}",
-            booking.start_date, booking.end_date
-        )),
-    ))
+    status::Accepted(Some(format!(
+        "Created new booking from {} to {}",
+        booking.start_date, booking.end_date
+    )))
 }
 
 #[put("/api/bookings", format = "json", data = "<booking>")]
 pub fn update(booking: Json<ExistedBooking>) -> status::Accepted<String> {
-    status::Accepted(Some((format!("Updated booking of {}", booking.reference))))
+    status::Accepted(Some(format!("Updated booking of {}", booking.reference)))
 }
 
 #[delete("/api/bookings/<ref_no>")]

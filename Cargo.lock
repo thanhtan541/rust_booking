@@ -27,6 +27,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "anyhow"
+version = "1.0.75"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a4668cab20f66d8d020e1fbc0ebe47217433c1b6c8f2040faf858554e394ace6"
+
+[[package]]
 name = "async-stream"
 version = "0.3.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1617,12 +1623,14 @@ dependencies = [
 name = "rust_booking"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "diesel",
  "dotenvy",
  "rocket 0.5.0-rc.3",
  "rocket_contrib",
  "rocket_dyn_templates",
  "serde",
+ "thiserror",
 ]
 
 [[package]]
