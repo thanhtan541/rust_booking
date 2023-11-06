@@ -3,7 +3,7 @@ use crate::prelude::*;
 use std::collections::HashMap;
 
 pub trait BookingRepository {
-    fn find_by_ref(&self, ref_no: String) -> Result<Booking>;
+    fn find_by_ref(&mut self, ref_no: String) -> Result<Booking>;
     fn save(&mut self, user: Booking) -> Result<bool>;
 }
 

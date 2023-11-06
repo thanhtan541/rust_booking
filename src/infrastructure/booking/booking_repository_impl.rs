@@ -11,9 +11,9 @@ pub struct BookingRepositoryImpl<'a> {
     entity: bookings,
 }
 
-impl BookingRepositoryImpl<'_> {
-    pub fn new(conn: &mut PgConnection) -> Self {
-        Self {
+impl<'a> BookingRepositoryImpl<'a> {
+    pub fn new(conn: &'a mut PgConnection) -> BookingRepositoryImpl<'a> {
+        BookingRepositoryImpl {
             conn,
             entity: bookings,
         }
@@ -21,16 +21,16 @@ impl BookingRepositoryImpl<'_> {
 }
 
 impl BookingRepository for BookingRepositoryImpl<'_> {
-    fn find_by_ref(&self, ref_no: String) -> Result<Booking> {
-        let results = self
+    fn find_by_ref(&mut self, ref_no: String) -> Result<Booking> {
+        let result = self
             .entity
             .filter(reference.eq(ref_no))
             .limit(1)
             .select(Booking::as_select())
-            .load(self.conn)
+            .first(self.conn)
             .expect("Error loading posts");
 
-        return Ok(results[0]);
+        Ok(result)
     }
 
     fn save(&mut self, booking: Booking) -> Result<bool> {
