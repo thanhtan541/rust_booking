@@ -2,8 +2,8 @@ use crate::prelude::*;
 
 use diesel::prelude::*;
 
-use crate::domain::booking::booking::Booking;
-use crate::domain::booking::booking_repository::BookingRepository;
+use crate::domain::booking::entity::Booking;
+use crate::domain::booking::repository::BookingRepository;
 use crate::infrastructure::database::schema::bookings::dsl::*;
 
 pub struct BookingRepositoryImpl<'a> {

@@ -1,4 +1,4 @@
-use crate::domain::booking::booking::Booking;
+use crate::domain::booking::entity::Booking;
 use crate::prelude::*;
 use std::collections::HashMap;
 

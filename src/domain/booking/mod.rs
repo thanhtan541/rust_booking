@@ -1,3 +1,4 @@
-pub mod booking;
-pub mod booking_repository;
-pub mod booking_service;
+pub mod entity;
+pub mod event_type;
+pub mod repository;
+pub mod service;

@@ -1,4 +1,4 @@
-use crate::domain::booking::booking::Booking;
+use crate::domain::booking::entity::Booking;
 
 pub trait BookingService {
     fn register(&mut self) -> Result<Booking, String>;

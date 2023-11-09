@@ -21,7 +21,7 @@ impl Booking {
 
 #[cfg(test)]
 mod test {
-    use crate::domain::booking::booking::Booking;
+    use crate::domain::booking::entity::Booking;
 
     #[test]
     fn create_client() {
