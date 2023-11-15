@@ -33,7 +33,7 @@ impl BookingRepository for BookingRepositoryImpl<'_> {
         Ok(result)
     }
 
-    fn save(&mut self, booking: Booking) -> Result<bool> {
+    fn save(&mut self, _booking: Booking) -> Result<bool> {
         Ok(true)
     }
 }

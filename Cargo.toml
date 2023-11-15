@@ -23,6 +23,3 @@ anyhow = "1"
 [dependencies.rocket_dyn_templates]
 
 features = ["handlebars"]
-
-[toolchain]
-channel = "nightly"
