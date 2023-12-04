@@ -19,6 +19,19 @@ impl Booking {
     }
 }
 
+pub struct Room {
+    pub reference: String,
+    pub name: String,
+    pub description: String,
+}
+
+pub struct RoomEvent {
+    pub reference: String,
+    pub start_date: String,
+    pub end_date: String,
+    pub r#type: String,
+}
+
 #[cfg(test)]
 mod test {
     use crate::domain::booking::entity::Booking;
