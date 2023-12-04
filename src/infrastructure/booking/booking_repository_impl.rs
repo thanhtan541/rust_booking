@@ -25,7 +25,6 @@ impl BookingRepository for BookingRepositoryImpl<'_> {
         let result = self
             .entity
             .filter(reference.eq(ref_no))
-            .limit(1)
             .select(Booking::as_select())
             .first(self.conn)
             .expect("Error loading posts");

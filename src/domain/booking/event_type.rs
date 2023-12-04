@@ -1,5 +1,7 @@
 enum EventType {
-    Created,
-    Updated,
-    Deleted,
+    Pending,
+    Reserved,
+    Ongoing,
+    Cancelled,
+    Done,
 }
