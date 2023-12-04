@@ -30,6 +30,7 @@ pub struct RoomEvent {
     pub start_date: String,
     pub end_date: String,
     pub r#type: String,
+    pub room_ref: String,
 }
 
 #[cfg(test)]
