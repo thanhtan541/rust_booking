@@ -1,10 +1,22 @@
-pub struct Allotment {
+pub struct Room {
+    pub reference: String,
+}
+
+impl Room {
+    pub fn new(reference: String) -> Self {
+        Self {
+            reference,
+        }
+    }
+}
+
+pub struct RoomEvent {
     pub reference: String,
     pub start_date: String,
     pub end_date: String,
 }
 
-impl Allotment {
+impl RoomEvent {
     pub fn new(reference: String, start_date: String, end_date: String) -> Self {
         Self {
             reference,
@@ -17,19 +29,36 @@ impl Allotment {
 
 #[cfg(test)]
 mod test {
-    use crate::domain::booking::allotment::Allotment;
+    use crate::domain::booking::allotment::*;
 
     #[test]
-    fn create_allotment() {
-        let reference = "123".to_string();
-        let start_date = "123".to_string();
-        let end_date = "123".to_string();
+    fn create_rooms() {
+        // create rooms
+        let mut rooms = Vec::new();
+        rooms.push(Room::new("1".to_string()));
+        rooms.push(Room::new("2".to_string()));
+        rooms.push(Room::new("3".to_string()));
 
-        let allotment = Allotment::new(reference, start_date, end_date);
+        assert_eq!(rooms.len(), 3);
 
-        assert_eq!(allotment.reference, "123");
-        assert_eq!(allotment.start_date, "123");
-        assert_eq!(allotment.end_date, "123");
+        let mut rooms_events = Vec::new();
+        rooms_events.push(RoomEvent::new(
+            "1".to_string(),
+            "2023-12-17".to_string(),
+            "2023-12-18".to_string(),
+        ));
+        rooms_events.push(RoomEvent::new(
+            "1".to_string(),
+            "2023-12-17".to_string(),
+            "2023-12-18".to_string(),
+        ));
+        rooms_events.push(RoomEvent::new(
+            "1".to_string(),
+            "2023-12-17".to_string(),
+            "2023-12-18".to_string(),
+        ));
+
+        assert_eq!(rooms_events.len(), 3);
     }
 }
 
