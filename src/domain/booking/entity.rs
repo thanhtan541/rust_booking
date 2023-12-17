@@ -50,3 +50,4 @@ mod test {
         assert_eq!(booking.end_date, "123");
     }
 }
+
