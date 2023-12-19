@@ -64,8 +64,14 @@ mod test {
             Utc.with_ymd_and_hms(2023, 12, 12, 0, 0, 0).unwrap(),
             Utc.with_ymd_and_hms(2023, 12, 17, 0, 0, 0).unwrap(),
         ));
+        rooms_events.push(RoomEvent::new(
+            "3".to_string(),
+            3,
+            Utc.with_ymd_and_hms(2023, 12, 20, 0, 0, 0).unwrap(),
+            Utc.with_ymd_and_hms(2023, 12, 25, 0, 0, 0).unwrap(),
+        ));
 
-        assert_eq!(rooms_events.len(), 3);
+        assert_eq!(rooms_events.len(), 4);
 
         let checkin_date = Utc.with_ymd_and_hms(2023, 12, 17, 0, 0, 0).unwrap();
         let checkout_date = Utc.with_ymd_and_hms(2023, 12, 20, 0, 0, 0).unwrap();
@@ -75,7 +81,7 @@ mod test {
         for room_event in rooms_events {
             // Event that has end date less than or equal to checkin date should not affect room
             // availability
-            if room_event.end_date <= checkin_date {
+            if room_event.end_date <= checkin_date || room_event.start_date >= checkout_date {
                 continue;
             }
 
