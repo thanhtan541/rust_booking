@@ -52,8 +52,20 @@ mod test {
             Utc.with_ymd_and_hms(2023, 12, 17, 0, 0, 0).unwrap(),
             Utc.with_ymd_and_hms(2023, 12, 20, 0, 0, 0).unwrap(),
         ));
+        rooms_events.push(RoomEvent::new(
+            "2".to_string(),
+            2,
+            Utc.with_ymd_and_hms(2023, 12, 17, 0, 0, 0).unwrap(),
+            Utc.with_ymd_and_hms(2023, 12, 20, 0, 0, 0).unwrap(),
+        ));
+        rooms_events.push(RoomEvent::new(
+            "3".to_string(),
+            3,
+            Utc.with_ymd_and_hms(2023, 12, 12, 0, 0, 0).unwrap(),
+            Utc.with_ymd_and_hms(2023, 12, 17, 0, 0, 0).unwrap(),
+        ));
 
-        assert_eq!(rooms_events.len(), 1);
+        assert_eq!(rooms_events.len(), 3);
 
         let checkin_date = Utc.with_ymd_and_hms(2023, 12, 17, 0, 0, 0).unwrap();
         let checkout_date = Utc.with_ymd_and_hms(2023, 12, 20, 0, 0, 0).unwrap();
@@ -61,8 +73,7 @@ mod test {
         // Expect available rooms are [2,3], since room 1 has event 
         let mut occupied_rooms: Vec<i32> = Vec::new();
         for room_event in rooms_events {
-            if room_event.start_date > checkin_date || room_event.start_date < checkout_date {
-                occupied_rooms.push(room_event.room_id);
+            if room_event.end_date <= checkin_date {
                 continue;
             }
 
@@ -70,9 +81,15 @@ mod test {
                 occupied_rooms.push(room_event.room_id);
                 continue;
             }
+
+            if room_event.start_date > checkin_date || room_event.start_date < checkout_date {
+                occupied_rooms.push(room_event.room_id);
+                continue;
+            }
+
         }
 
-        assert_eq!(occupied_rooms, [1]);
+        assert_eq!(occupied_rooms, [1, 2]);
     }
 }
 
