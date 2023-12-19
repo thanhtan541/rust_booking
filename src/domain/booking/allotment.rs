@@ -73,6 +73,8 @@ mod test {
         // Expect available rooms are [2,3], since room 1 has event 
         let mut occupied_rooms: Vec<i32> = Vec::new();
         for room_event in rooms_events {
+            // Event that has end date less than or equal to checkin date should not affect room
+            // availability
             if room_event.end_date <= checkin_date {
                 continue;
             }
