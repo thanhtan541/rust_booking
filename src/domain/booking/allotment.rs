@@ -101,7 +101,7 @@ mod test {
         let checkout_date = Utc.with_ymd_and_hms(2023, 12, 20, 0, 0, 0).unwrap();
 
         // Expect available rooms are [2,3], since room 1 has event 
-        let mut occupied_rooms: Vec<i32> = find_occupied_rooms(rooms_events, checkin_date, checkout_date);
+        let occupied_rooms: Vec<i32> = find_occupied_rooms(rooms_events, checkin_date, checkout_date);
 
         assert_eq!(occupied_rooms, [1, 2]);
     }

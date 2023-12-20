@@ -1,4 +1,5 @@
 use diesel::prelude::*;
+use chrono::prelude::*;
 
 #[derive(Queryable, Selectable, Clone, Debug)]
 #[diesel(table_name = crate::infrastructure::database::schema::bookings)]
@@ -19,18 +20,26 @@ impl Booking {
     }
 }
 
-pub struct Room {
+pub struct BookingRaw {
     pub reference: String,
-    pub name: String,
-    pub description: String,
+    pub from: DateTime<Utc>,
+    pub to: DateTime<Utc>,
+    pub item_id: i32,
 }
 
-pub struct RoomEvent {
-    pub reference: String,
-    pub start_date: String,
-    pub end_date: String,
-    pub r#type: String,
-    pub room_ref: String,
+impl BookingRaw {
+    pub fn new(reference: String, from: DateTime<Utc>, to: DateTime<Utc>, item_id: i32) -> Self {
+        Self {
+            reference,
+            from,
+            to,
+            item_id,
+        }
+    }
+
+    pub fn duration(self) -> i32 {
+        self.to.signed_duration_since(self.from).num_days() as i32
+    }
 }
 
 #[cfg(test)]
