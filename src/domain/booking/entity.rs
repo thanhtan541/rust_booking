@@ -44,19 +44,18 @@ impl BookingRaw {
 
 #[cfg(test)]
 mod test {
-    use crate::domain::booking::entity::Booking;
+    use super::*;
 
     #[test]
-    fn create_client() {
-        let reference = "123".to_string();
-        let start_date = "123".to_string();
-        let end_date = "123".to_string();
+    fn create_raw_booking() {
+        let booking = BookingRaw::new(
+            String::from("raw_booking"),
+            Utc.with_ymd_and_hms(2023, 12, 17, 0, 0, 0).unwrap(),
+            Utc.with_ymd_and_hms(2023, 12, 20, 0, 0, 0).unwrap(),
+            1,
+        );
 
-        let booking = Booking::new(reference, start_date, end_date);
-
-        assert_eq!(booking.reference, "123");
-        assert_eq!(booking.start_date, "123");
-        assert_eq!(booking.end_date, "123");
+        assert_eq!(3, booking.duration());
     }
 }
 
