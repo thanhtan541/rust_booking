@@ -20,25 +20,30 @@ impl Booking {
     }
 }
 
-pub struct BookingRaw {
+#[derive(Debug, Clone)]
+pub struct BookingSnapshot {
     pub reference: String,
     pub from: DateTime<Utc>,
     pub to: DateTime<Utc>,
-    pub item_id: i32,
+    pub total: i32,
 }
 
-impl BookingRaw {
-    pub fn new(reference: String, from: DateTime<Utc>, to: DateTime<Utc>, item_id: i32) -> Self {
+impl BookingSnapshot {
+    pub fn new(reference: String, from: DateTime<Utc>, to: DateTime<Utc>, total: i32) -> Self {
         Self {
             reference,
             from,
             to,
-            item_id,
+            total,
         }
     }
 
-    pub fn duration(self) -> i32 {
+    pub fn duration(&self) -> i32 {
         self.to.signed_duration_since(self.from).num_days() as i32
+    }
+
+    pub fn total(&self) -> i32 {
+        self.total
     }
 }
 
@@ -48,7 +53,7 @@ mod test {
 
     #[test]
     fn create_raw_booking() {
-        let booking = BookingRaw::new(
+        let booking = BookingSnapshot::new(
             String::from("raw_booking"),
             Utc.with_ymd_and_hms(2023, 12, 17, 0, 0, 0).unwrap(),
             Utc.with_ymd_and_hms(2023, 12, 20, 0, 0, 0).unwrap(),
@@ -56,6 +61,7 @@ mod test {
         );
 
         assert_eq!(3, booking.duration());
+        assert_eq!(1, booking.total());
     }
 }
 
