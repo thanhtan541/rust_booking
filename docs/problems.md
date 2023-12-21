@@ -40,3 +40,5 @@ What do we need in this solution?
     - booking_number (fk) -> bookingsnapshot
     - action
 
+
+Booking Even type: Created, Updated, Done 
