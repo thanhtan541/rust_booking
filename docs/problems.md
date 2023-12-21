@@ -21,3 +21,22 @@ Example:
 - Room 2nd booked from 11 to 14
 - Result: no available rooms
 
+Problems: How deos customer make a booking?
+Solutions:
+1 - Pick an availability room
+2 - Show detail booking: price, duration ...
+3 - Confirm
+
+What do we need in this solution?
+- Room
+    - Id
+- Booking Snapshot: Avoid general names like order due to confuse with shopping site
+    - Id
+    - item_id (fk) -> room
+    - start_date
+    - end_date
+- Booking Event:
+    - Id
+    - booking_number (fk) -> bookingsnapshot
+    - action
+
