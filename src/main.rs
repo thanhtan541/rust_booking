@@ -1,7 +1,7 @@
 extern crate diesel;
 extern crate rocket;
 extern crate rocket_contrib;
-use controllers::booking_controller;
+use controllers::*;
 use rocket::{get, launch, routes};
 
 mod controllers;
@@ -21,6 +21,7 @@ fn rocket() -> _ {
             booking_controller::update,
             booking_controller::delete,
             booking_controller::fun,
+            room_controller::fun,
         ],
     )
 }
