@@ -18,7 +18,8 @@ impl Fairing for Cors {
         response: &mut Response<'r>) {
         response.set_header(Header::new(
             "access-control-allow-origin",
-            "http://127.0.0.1:8081",
+            //Todo: security risk
+            "*",
         ));
         response.set_header(Header::new(
             "access-control-allow-methods",
