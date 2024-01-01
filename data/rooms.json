@@ -6,7 +6,7 @@
             "keywords": [
                 "Wifi"
             ],
-            "imageUrl": "https://placehold.co/300x200"
+            "imageUrl": "https://placehold.co/150x100"
         },
         {
             "id": 2,
@@ -15,7 +15,7 @@
                 "Wifi",
                 "Breakfast"
             ],
-            "imageUrl": "https://placehold.co/300x200"
+            "imageUrl": "https://placehold.co/150x100"
         },
         {
             "id": 3,
@@ -25,7 +25,7 @@
                 "Breakfast",
                 "Pool"
             ],
-            "imageUrl": "https://placehold.co/300x200"
+            "imageUrl": "https://placehold.co/150x100"
         }
     ],
     "total": 100,
