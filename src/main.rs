@@ -1,7 +1,7 @@
 extern crate rocket;
 extern crate rocket_contrib;
 
-use rocket::{get, launch, routes};
+use rocket::{get, launch, routes, catch, Request, catchers};
 
 mod middleware;
 mod controllers;
@@ -12,6 +12,11 @@ use middleware::cors::Cors;
 #[get("/hello")]
 fn hello() -> String {
     "Hello".to_string()
+}
+
+#[catch(404)]
+fn not_found(req: &Request) -> String {
+    format!("I couldn't find '{}'. Try something else?", req.uri())
 }
 
 #[launch]
@@ -30,5 +35,6 @@ fn rocket() -> _ {
             ],
         )
         .attach(Cors)
+        .register("/", catchers![not_found])
 }
 
