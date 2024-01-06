@@ -22,7 +22,12 @@ chrono = "0.4.31"
 
 [dev-dependencies]
 anyhow = "1"
+criterion = "0.3"
+
+[[bench]]
+name = "my_benchmark"
+harness = false
 
 [dependencies.rocket_dyn_templates]
-
 features = ["handlebars"]
+
