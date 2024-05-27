@@ -1,5 +1,5 @@
+use rocket::{delete, get, patch, post};
 use std::fs;
-use rocket::{get, patch, delete, post};
 
 #[get("/rooms/<id>")]
 pub fn show(id: u32) -> String {
@@ -7,12 +7,8 @@ pub fn show(id: u32) -> String {
 
     // Attempt to read the file content
     match fs::read_to_string(file_path) {
-        Ok(content) => {
-            content
-        }
-        _ => {
-            "I'm am a ZZ TeaPot".to_string()
-        }
+        Ok(content) => content,
+        _ => "I'm am a ZZ TeaPot".to_string(),
     }
 }
 
@@ -22,12 +18,8 @@ pub fn list() -> String {
 
     // Attempt to read the file content
     match fs::read_to_string(file_path) {
-        Ok(content) => {
-            content
-        }
-        _ => {
-            "I'm am a ZZ TeaPot".to_string()
-        }
+        Ok(content) => content,
+        _ => "I'm am a ZZ TeaPot".to_string(),
     }
 }
 
@@ -37,12 +29,8 @@ pub fn add() -> String {
 
     // Attempt to read the file content
     match fs::read_to_string(file_path) {
-        Ok(content) => {
-            content
-        }
-        _ => {
-            "I'm am a ZZ TeaPot".to_string()
-        }
+        Ok(content) => content,
+        _ => "I'm am a ZZ TeaPot".to_string(),
     }
 }
 
@@ -52,12 +40,8 @@ pub fn patch(id: u32) -> String {
 
     // Attempt to read the file content
     match fs::read_to_string(file_path) {
-        Ok(content) => {
-            content
-        }
-        _ => {
-            "I'm am a ZZ TeaPot".to_string()
-        }
+        Ok(content) => content,
+        _ => "I'm am a ZZ TeaPot".to_string(),
     }
 }
 
@@ -67,12 +51,7 @@ pub fn delete(id: u32) -> String {
 
     // Attempt to read the file content
     match fs::read_to_string(file_path) {
-        Ok(content) => {
-            content
-        }
-        _ => {
-            "I'm am a ZZ TeaPot".to_string()
-        }
+        Ok(content) => content,
+        _ => "I'm am a ZZ TeaPot".to_string(),
     }
 }
-

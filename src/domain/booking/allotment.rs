@@ -6,9 +6,7 @@ pub struct Room {
 
 impl Room {
     pub fn new(reference: String) -> Self {
-        Self {
-            reference,
-        }
+        Self { reference }
     }
 }
 
@@ -20,7 +18,12 @@ pub struct RoomEvent {
 }
 
 impl RoomEvent {
-    pub fn new(reference: String, room_id: i32, start_date: DateTime<Utc>, end_date: DateTime<Utc>) -> Self {
+    pub fn new(
+        reference: String,
+        room_id: i32,
+        start_date: DateTime<Utc>,
+        end_date: DateTime<Utc>,
+    ) -> Self {
         Self {
             reference,
             room_id,
@@ -30,7 +33,11 @@ impl RoomEvent {
     }
 }
 
-fn find_occupied_rooms(room_events: Vec<RoomEvent>, from: DateTime<Utc>, to: DateTime<Utc>) -> Vec<i32> {
+fn find_occupied_rooms(
+    room_events: Vec<RoomEvent>,
+    from: DateTime<Utc>,
+    to: DateTime<Utc>,
+) -> Vec<i32> {
     let mut occupied_rooms: Vec<i32> = Vec::new();
     for room_event in room_events {
         // Event that has end date less than or equal to checkin date should not affect room
@@ -51,9 +58,7 @@ fn find_occupied_rooms(room_events: Vec<RoomEvent>, from: DateTime<Utc>, to: Dat
     }
 
     return occupied_rooms;
-
 }
-
 
 #[cfg(test)]
 mod test {
@@ -100,10 +105,10 @@ mod test {
         let checkin_date = Utc.with_ymd_and_hms(2023, 12, 17, 0, 0, 0).unwrap();
         let checkout_date = Utc.with_ymd_and_hms(2023, 12, 20, 0, 0, 0).unwrap();
 
-        // Expect available rooms are [2,3], since room 1 has event 
-        let occupied_rooms: Vec<i32> = find_occupied_rooms(rooms_events, checkin_date, checkout_date);
+        // Expect available rooms are [2,3], since room 1 has event
+        let occupied_rooms: Vec<i32> =
+            find_occupied_rooms(rooms_events, checkin_date, checkout_date);
 
         assert_eq!(occupied_rooms, [1, 2]);
     }
 }
-

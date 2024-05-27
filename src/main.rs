@@ -1,10 +1,7 @@
-extern crate rocket;
-extern crate rocket_contrib;
+use rocket::{catch, catchers, get, launch, routes, Request};
 
-use rocket::{get, launch, routes, catch, Request, catchers};
-
-mod middleware;
 mod controllers;
+mod middleware;
 
 use controllers::*;
 use middleware::cors::Cors;
@@ -37,4 +34,3 @@ fn rocket() -> _ {
         .attach(Cors)
         .register("/", catchers![not_found])
 }
-

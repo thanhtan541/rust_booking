@@ -44,4 +44,3 @@ pub fn delete(ref_no: &str) -> String {
 pub fn fun() -> RawTeapotJson {
     RawTeapotJson("I'm am a TeaPot")
 }
-

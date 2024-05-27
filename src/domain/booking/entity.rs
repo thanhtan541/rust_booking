@@ -1,5 +1,5 @@
-use diesel::prelude::*;
 use chrono::prelude::*;
+use diesel::prelude::*;
 
 #[derive(Queryable, Selectable, Clone, Debug)]
 #[diesel(table_name = crate::infrastructure::database::schema::bookings)]
@@ -64,4 +64,3 @@ mod test {
         assert_eq!(1, booking.total());
     }
 }
-
